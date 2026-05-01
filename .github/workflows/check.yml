@@ -1,0 +1,46 @@
+name: check
+
+on:
+  schedule:
+    - cron: "15 */6 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: check
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run checker
+        run: python check.py
+
+      - name: Commit updated history
+        run: |
+          git config user.name  "808status-bot"
+          git config user.email "808status-bot@users.noreply.github.com"
+          git add history.json
+          if ! git diff --cached --quiet; then
+            git commit -m "check: $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          else
+            echo "No changes to history.json; skipping commit."
+          fi
