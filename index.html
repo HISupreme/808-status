@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>808status — Hawaii .gov uptime</title>
+<meta name="description" content="A public scoreboard of Hawaii state and county government website availability.">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --rule: #e5e5e0;
+    --ok: #2d8f3f;
+    --bad: #c43a2c;
+    --warn: #d68a1e;
+    --none: #d8d8d2;
+    --accent: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  /* ----- Editorial header ----- */
+  header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .brand {
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 1.5rem;
+  }
+
+  .headline {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+    max-width: 28ch;
+  }
+
+  .headline .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .headline.allgreen { color: var(--ok); }
+  .headline.broken .num { color: var(--bad); }
+
+  .subline {
+    font-size: 0.9375rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ----- Grid ----- */
+  .grid {
+    display: grid;
+    gap: 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(240px, 1.5fr) minmax(0, 2fr) 110px;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .row.broken { background: linear-gradient(90deg, rgba(196,58,44,0.04), transparent 60%); }
+
+  .label {
+    min-width: 0;
+  }
+
+  .label .name {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    margin: 0 0 0.125rem;
+    overflow-wrap: break-word;
+  }
+
+  .label .meta {
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .label a.url {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+  }
+
+  .label a.url:hover {
+    color: var(--fg);
+    border-bottom-color: var(--fg);
+  }
+
+  /* History strip — 30-day pixel grid */
+  .strip {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .cell {
+    width: 6px;
+    height: 22px;
+    border-radius: 1px;
+    background: var(--none);
+    flex-shrink: 0;
+  }
+  .cell.ok { background: var(--ok); }
+  .cell.bad { background: var(--bad); }
+  .cell.warn { background: var(--warn); }
+
+  /* Status column */
+  .status {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.875rem;
+  }
+
+  .status .code {
+    font-weight: 600;
+  }
+  .status .code.ok { color: var(--ok); }
+  .status .code.bad { color: var(--bad); }
+  .status .code.none { color: var(--muted); }
+
+  .status .ms {
+    color: var(--muted);
+    font-size: 0.8125rem;
+  }
+
+  .status .since {
+    color: var(--bad);
+    font-size: 0.75rem;
+    margin-top: 0.125rem;
+  }
+
+  /* ----- Footer ----- */
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--muted);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+  }
+
+  footer a:hover { color: var(--fg); }
+
+  /* Loading + error states */
+  .state {
+    padding: 2rem 0;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 1rem 0;
+    }
+    .status { text-align: left; }
+    .strip { overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="brand">808status</p>
+    <h1 id="headline" class="headline">Loading…</h1>
+    <p id="subline" class="subline">&nbsp;</p>
+  </header>
+
+  <main>
+    <div id="grid" class="state">Loading checks…</div>
+  </main>
+
+  <footer>
+    <p>
+      A public scoreboard of Hawaii state and county government website availability.
+      Pings every six hours. Sibling project of <a href="https://808forms.org">808forms</a>.
+      Source: <a href="https://github.com/USER/808status">github.com/USER/808status</a>.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+(async function () {
+  const HISTORY_URL = "history.json";
+  const URLS_URL = "urls.json";
+  const STRIP_DAYS = 30;
+  const CHECKS_PER_DAY = 4; // matches our 6-hour cron
+
+  const headline = document.getElementById("headline");
+  const subline = document.getElementById("subline");
+  const grid = document.getElementById("grid");
+
+  let history, urls;
+  try {
+    [history, urls] = await Promise.all([
+      fetch(HISTORY_URL).then(r => r.json()),
+      fetch(URLS_URL).then(r => r.json()),
+    ]);
+  } catch (e) {
+    grid.textContent = "Could not load status data. Check back in a few minutes.";
+    headline.textContent = "Status unavailable";
+    return;
+  }
+
+  const checks = urls.checks || [];
+  const allHistory = history.checks || {};
+
+  // Build per-URL summaries
+  const summaries = checks.map(c => {
+    const rows = allHistory[c.id] || [];
+    const last = rows.length ? rows[rows.length - 1] : null;
+    const ok = last ? last.ok : null;
+
+    // How long has it been broken? Walk back from latest until we find an OK.
+    let brokenSince = null;
+    let brokenSinceFirstCheck = false;
+    if (last && !last.ok) {
+      brokenSince = last.ts;
+      let walkedToStart = true;
+      for (let i = rows.length - 1; i >= 0; i--) {
+        if (rows[i].ok) {
+          walkedToStart = false;
+          break;
+        }
+        brokenSince = rows[i].ts;
+      }
+      // If we walked all the way back to the first row without finding an OK,
+      // we don't actually know when the breakage started — only that the page
+      // was already broken when we started checking.
+      brokenSinceFirstCheck = walkedToStart;
+    }
+
+    // Uptime over last 30 days
+    const cutoff = Date.now() - STRIP_DAYS * 24 * 60 * 60 * 1000;
+    const recent = rows.filter(r => new Date(r.ts).getTime() >= cutoff);
+    const uptime = recent.length
+      ? recent.filter(r => r.ok).length / recent.length
+      : null;
+
+    return {
+      ...c,
+      rows,
+      last,
+      ok,
+      brokenSince,
+      brokenSinceFirstCheck,
+      uptime,
+      recent,
+    };
+  });
+
+  // ----- Editorial header -----
+  const total = summaries.length;
+  const broken = summaries.filter(s => s.ok === false).length;
+  const monitored = summaries.filter(s => s.last !== null).length;
+
+  if (broken === 0 && monitored > 0) {
+    headline.className = "headline allgreen";
+    headline.innerHTML = `All <span class="num">${total}</span> Hawaii .gov pages are up.`;
+  } else if (broken > 0) {
+    headline.className = "headline broken";
+    headline.innerHTML =
+      `<span class="num">${broken}</span> of <span class="num">${total}</span> Hawaii .gov pages are broken right now.`;
+  } else {
+    headline.className = "headline";
+    headline.textContent = `Tracking ${total} Hawaii .gov pages.`;
+  }
+
+  const lastRun = history.last_run
+    ? new Date(history.last_run)
+    : null;
+  const firstSeen = oldestTimestamp(allHistory);
+  const lastRunStr = lastRun
+    ? `${lastRun.toLocaleString("en-US", { timeZone: "Pacific/Honolulu", dateStyle: "medium", timeStyle: "short" })} HST`
+    : "never";
+  const sinceStr = firstSeen
+    ? `${firstSeen.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}`
+    : "—";
+  subline.textContent = `Last checked ${lastRunStr}. Monitoring since ${sinceStr}.`;
+
+  // ----- Grid -----
+  // Sort: broken first (longest-broken first), then OK alphabetical
+  summaries.sort((a, b) => {
+    if (a.ok === false && b.ok !== false) return -1;
+    if (b.ok === false && a.ok !== false) return 1;
+    if (a.ok === false && b.ok === false) {
+      return new Date(a.brokenSince) - new Date(b.brokenSince); // older breakage first
+    }
+    return a.label.localeCompare(b.label);
+  });
+
+  grid.className = "grid";
+  grid.innerHTML = summaries.map(renderRow).join("");
+
+  function renderRow(s) {
+    const strip = renderStrip(s.recent);
+    const isBroken = s.ok === false;
+    const codeClass = s.last == null ? "none" : (s.ok ? "ok" : "bad");
+    const code = s.last == null ? "—" : (s.last.status === 0 ? "err" : s.last.status);
+    const ms = s.last && s.last.ms ? `${s.last.ms} ms` : "&nbsp;";
+    const sinceLine = isBroken && s.brokenSince
+      ? `<div class="since">${
+          s.brokenSinceFirstCheck
+            ? "broken since first check"
+            : "broken " + humanDuration(s.brokenSince)
+        }</div>`
+      : "";
+    const uptimeLine = s.uptime != null
+      ? `<span title="30-day uptime">${(s.uptime * 100).toFixed(1)}% up · 30d</span>`
+      : "no data yet";
+
+    return `
+      <div class="row ${isBroken ? "broken" : ""}">
+        <div class="label">
+          <div class="name">${escapeHtml(s.label)}</div>
+          <div class="meta">${escapeHtml(s.agency)} · ${uptimeLine}</div>
+          <div class="meta"><a class="url" href="${escapeAttr(s.url)}" target="_blank" rel="noopener">${escapeHtml(s.url)}</a></div>
+        </div>
+        <div class="strip" title="Last 30 days, oldest left">${strip}</div>
+        <div class="status">
+          <div><span class="code ${codeClass}">${code}</span></div>
+          <div class="ms">${ms}</div>
+          ${sinceLine}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderStrip(rows) {
+    // Bucket recent checks into ~30 cells (one per day-ish).
+    // Simple version: render the last 30 checks as cells.
+    const N = STRIP_DAYS * CHECKS_PER_DAY; // last 120 checks
+    const slice = rows.slice(-N);
+    // Pad on the left if we have fewer
+    const pad = Math.max(0, N - slice.length);
+    let html = "";
+    for (let i = 0; i < pad; i++) {
+      html += `<span class="cell"></span>`;
+    }
+    for (const r of slice) {
+      const cls = r.ok ? "ok" : "bad";
+      html += `<span class="cell ${cls}" title="${r.ts}: ${r.status}"></span>`;
+    }
+    return html;
+  }
+
+  function oldestTimestamp(allHistory) {
+    let oldest = null;
+    for (const id in allHistory) {
+      const rows = allHistory[id];
+      if (rows.length && (!oldest || rows[0].ts < oldest)) {
+        oldest = rows[0].ts;
+      }
+    }
+    return oldest ? new Date(oldest) : null;
+  }
+
+  function humanDuration(iso) {
+    const then = new Date(iso).getTime();
+    const now = Date.now();
+    const hours = Math.floor((now - then) / (1000 * 60 * 60));
+    if (hours < 1) return "for less than an hour";
+    if (hours < 24) return `for ${hours} hour${hours === 1 ? "" : "s"}`;
+    const days = Math.floor(hours / 24);
+    if (days < 30) return `for ${days} day${days === 1 ? "" : "s"}`;
+    const months = Math.floor(days / 30);
+    return `for ${months} month${months === 1 ? "" : "s"}`;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[c]));
+  }
+
+  function escapeAttr(s) { return escapeHtml(s); }
+})();
+</script>
+</body>
+</html>
