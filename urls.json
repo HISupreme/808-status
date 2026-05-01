@@ -1,0 +1,584 @@
+{
+  "version": 1,
+  "updated": "2026-05-01",
+  "source": "808forms FORMS array",
+  "note": "v1 monitor set: ~50 high-value URLs. Add more from full 808forms extraction as needed.",
+  "checks": [
+    {
+      "id": "dcca-breg-landing",
+      "url": "https://cca.hawaii.gov/breg/",
+      "label": "DCCA BREG \u2014 5 forms",
+      "agency": "DCCA BREG",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "dlir-ui-landing-ui-ui-forms",
+      "url": "https://labor.hawaii.gov/ui/ui-forms/",
+      "label": "DLIR UI \u2014 4 forms",
+      "agency": "DLIR UI",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing-forms-a1-b2-1geuse",
+      "url": "https://tax.hawaii.gov/forms/a1_b2_1geuse/",
+      "label": "DOTAX \u2014 3 forms",
+      "agency": "DOTAX",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing-forms-a1-b1-5whhold",
+      "url": "https://tax.hawaii.gov/forms/a1_b1_5whhold/",
+      "label": "DOTAX \u2014 3 forms",
+      "agency": "DOTAX",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "district-court-landing-www-courts-state-hi-us-self-help",
+      "url": "https://www.courts.state.hi.us/self-help/",
+      "label": "District Court \u2014 11 forms",
+      "agency": "District Court",
+      "category": "courts",
+      "expect_status": 200
+    },
+    {
+      "id": "family-court-landing",
+      "url": "https://www.courts.state.hi.us/self-help/courts/forms/court_forms",
+      "label": "Family Court \u2014 7 forms",
+      "agency": "Family Court",
+      "category": "courts",
+      "expect_status": 200
+    },
+    {
+      "id": "hidoe-landing",
+      "url": "https://hawaiipublicschools.org/enrolling-in-school/how-to-enroll/",
+      "label": "HIDOE \u2014 3 forms",
+      "agency": "HIDOE",
+      "category": "education",
+      "expect_status": 200
+    },
+    {
+      "id": "dhhl-landing",
+      "url": "https://dhhl.hawaii.gov/applications/",
+      "label": "DHHL \u2014 3 forms",
+      "agency": "DHHL",
+      "category": "housing",
+      "expect_status": 200
+    },
+    {
+      "id": "big-island-rpt-landing-economic-self-sufficiency-tax-relief-kuleana-land-holders",
+      "url": "https://www.oha.org/economic-self-sufficiency/tax-relief-kuleana-land-holders/",
+      "label": "Big Island RPT \u2014 3 forms",
+      "agency": "Big Island RPT",
+      "category": "property",
+      "expect_status": 200
+    },
+    {
+      "id": "maui-rpa-landing",
+      "url": "https://www.mauicounty.gov/1953/RPA-Forms-and-Instructions",
+      "label": "Maui RPA \u2014 5 forms",
+      "agency": "Maui RPA",
+      "category": "property",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing-forms-a1-b1-1income",
+      "url": "https://tax.hawaii.gov/forms/a1_b1_1income/",
+      "label": "DOTAX \u2014 3 forms",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing-forms-a1-b3-6harpta",
+      "url": "https://tax.hawaii.gov/forms/a1_b3_6harpta/",
+      "label": "DOTAX \u2014 3 forms",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing",
+      "url": "https://tax.hawaii.gov/forms/a1_1alphalist/",
+      "label": "DOTAX \u2014 7 forms",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "county-dmv-landing",
+      "url": "https://hidot.hawaii.gov/highways/motorcycle/motor-vehicle-registration/",
+      "label": "County DMV \u2014 3 forms",
+      "agency": "County DMV",
+      "category": "vehicle",
+      "expect_status": 200
+    },
+    {
+      "id": "state-dld-landing",
+      "url": "https://hidot.hawaii.gov/driverslicense/",
+      "label": "State DLD \u2014 4 forms",
+      "agency": "State DLD",
+      "category": "vehicle",
+      "expect_status": 200
+    },
+    {
+      "id": "doh-ohsm-landing",
+      "url": "https://vitrec.ehawaii.gov/vitalrecords/",
+      "label": "DOH OHSM \u2014 3 forms",
+      "agency": "DOH OHSM",
+      "category": "vital-records",
+      "expect_status": 200
+    },
+    {
+      "id": "doh-ohsm-landing-health-hawaii-gov-vitalrecords",
+      "url": "https://health.hawaii.gov/vitalrecords/",
+      "label": "DOH OHSM \u2014 5 forms",
+      "agency": "DOH OHSM",
+      "category": "vital-records",
+      "expect_status": 200
+    },
+    {
+      "id": "dlir-dcd-landing",
+      "url": "https://labor.hawaii.gov/dcd/forms/",
+      "label": "DLIR DCD \u2014 4 forms",
+      "agency": "DLIR DCD",
+      "category": "worker",
+      "expect_status": 200
+    },
+    {
+      "id": "breg-annual-report",
+      "url": "https://hbe.ehawaii.gov/annuals/",
+      "label": "Annual Report (Corporation / LLC / Nonprofit)",
+      "agency": "DCCA BREG",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "articles-of-conversion",
+      "url": "https://cca.hawaii.gov/breg/files/2022/11/X-10-ARTICLES-OF-CONVERSION-11-2025.pdf",
+      "label": "Articles of Conversion (LLC \u2192 Corporation, or any entity-type change)",
+      "agency": "DCCA BREG",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "dlir-ui-landing",
+      "url": "https://huiclaims.hawaii.gov/",
+      "label": "DLIR UI \u2014 2 forms",
+      "agency": "DLIR UI",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing-forms-a1-b2-2tat",
+      "url": "https://tax.hawaii.gov/forms/a1_b2_2tat/",
+      "label": "DOTAX \u2014 2 forms",
+      "agency": "DOTAX",
+      "category": "business",
+      "expect_status": 200
+    },
+    {
+      "id": "crime-victim-compensation",
+      "url": "https://dcr.hawaii.gov/cvcc/apply-for-compensation/",
+      "label": "Crime Victim Compensation Application",
+      "agency": "DCR CVCC",
+      "category": "civic",
+      "expect_status": 200
+    },
+    {
+      "id": "fema-individual-assistance",
+      "url": "https://www.disasterassistance.gov/",
+      "label": "FEMA Individual Assistance",
+      "agency": "FEMA / HI-EMA",
+      "category": "civic",
+      "expect_status": 200
+    },
+    {
+      "id": "youth-challenge-academy",
+      "url": "https://dod.hawaii.gov/yca/",
+      "label": "Hawai\u02bbi National Guard Youth Challenge Academy (YCA) Application",
+      "agency": "HING YCA",
+      "category": "civic",
+      "expect_status": 200
+    },
+    {
+      "id": "hi-veterans-cemetery",
+      "url": "https://dod.hawaii.gov/ovs/veterans-cemetery/arranging-for-burial-in-the-hawaii-state-veterans-cemetery-kaneohe/",
+      "label": "Hawai\u02bbi State Veterans Cemetery Burial / Interment Application",
+      "agency": "OVS",
+      "category": "civic",
+      "expect_status": 200
+    },
+    {
+      "id": "small-estate-affidavit",
+      "url": "https://www.courts.state.hi.us/self-help/probate",
+      "label": "Affidavit for Collection of Personal Property (Small Estate)",
+      "agency": "Probate Court",
+      "category": "courts",
+      "expect_status": 200
+    },
+    {
+      "id": "csea-landing",
+      "url": "https://ag.hawaii.gov/csea/",
+      "label": "CSEA \u2014 2 forms",
+      "agency": "CSEA",
+      "category": "courts",
+      "expect_status": 200
+    },
+    {
+      "id": "csea-modification",
+      "url": "https://ag.hawaii.gov/csea/order-processing/",
+      "label": "Child Support Modification (CSEA Administrative Route)",
+      "agency": "CSEA",
+      "category": "courts",
+      "expect_status": 200
+    },
+    {
+      "id": "district-court-landing",
+      "url": "https://www.courts.state.hi.us/self-help/dc/small_claims",
+      "label": "District Court \u2014 2 forms",
+      "agency": "District Court",
+      "category": "courts",
+      "expect_status": 200
+    },
+    {
+      "id": "geographic-exception",
+      "url": "https://hawaiipublicschools.org/enrolling-in-school/geographic-exceptions/",
+      "label": "Geographic Exception Request",
+      "agency": "HIDOE",
+      "category": "education",
+      "expect_status": 200
+    },
+    {
+      "id": "hidoe-sped-landing",
+      "url": "https://hawaiipublicschools.org/school-services/parent-rights/dispute-resolutions-and-mediations/",
+      "label": "HIDOE SPED \u2014 2 forms",
+      "agency": "HIDOE SPED",
+      "category": "education",
+      "expect_status": 200
+    },
+    {
+      "id": "tb-clearance",
+      "url": "https://health.hawaii.gov/tb/tuberculosis/",
+      "label": "TB Clearance for School Entry",
+      "agency": "DOH/HIDOE",
+      "category": "education",
+      "expect_status": 200
+    },
+    {
+      "id": "dhhl-successor-applicant",
+      "url": "https://dhhl.hawaii.gov/wp-content/uploads/2011/11/FORM-Request-to-be-Designated.pdf",
+      "label": "DHHL Request to be Designated as Successor (Applicant Rights)",
+      "agency": "DHHL",
+      "category": "hawaiian-home-lands",
+      "expect_status": 200
+    },
+    {
+      "id": "oha-hawaiian-registry",
+      "url": "https://www.oha.org/resources/hawaiian-registry/",
+      "label": "OHA Hawaiian Registry Program (HRP Card)",
+      "agency": "OHA",
+      "category": "hawaiian-home-lands",
+      "expect_status": 200
+    },
+    {
+      "id": "oha-malama-loan",
+      "url": "https://www.oha.org/economic-self-sufficiency/loans/",
+      "label": "OHA M\u0101lama Loan",
+      "agency": "OHA NHRLF",
+      "category": "hawaiian-home-lands",
+      "expect_status": 200
+    },
+    {
+      "id": "aps-report",
+      "url": "https://apsreport.hawaii.gov/",
+      "label": "Adult Protective Services (APS) Vulnerable Adult Abuse Report",
+      "agency": "DHS SSD",
+      "category": "health",
+      "expect_status": 200
+    },
+    {
+      "id": "cesspool-grant-application",
+      "url": "https://health.hawaii.gov/wastewater/home/ccpgp/",
+      "label": "Cesspool Pilot Grant Program Application",
+      "agency": "DOH WWB",
+      "category": "health",
+      "expect_status": 200
+    },
+    {
+      "id": "dhs-bessd-landing",
+      "url": "https://humanservices.hawaii.gov/bessd/snap/",
+      "label": "DHS BESSD \u2014 2 forms",
+      "agency": "DHS BESSD",
+      "category": "health",
+      "expect_status": 200
+    },
+    {
+      "id": "dhs-med-quest-landing",
+      "url": "https://medquest.hawaii.gov/",
+      "label": "DHS Med-QUEST \u2014 2 forms",
+      "agency": "DHS Med-QUEST",
+      "category": "health",
+      "expect_status": 200
+    },
+    {
+      "id": "dhhl-landing-dhhl-hawaii-gov",
+      "url": "https://dhhl.hawaii.gov/",
+      "label": "DHHL \u2014 2 forms",
+      "agency": "DHHL",
+      "category": "housing",
+      "expect_status": 200
+    },
+    {
+      "id": "bigisland-hcv-waitlist",
+      "url": "https://waitlistcheck.com/HI2362-914",
+      "label": "Hawai\u02bbi County Section 8 HCV Waiting List",
+      "agency": "OHCD",
+      "category": "housing",
+      "expect_status": 200
+    },
+    {
+      "id": "honolulu-hcv-waitlist",
+      "url": "https://www.waitlistcheck.com/HI654",
+      "label": "Honolulu Section 8 HCV Waiting List",
+      "agency": "Honolulu DCS",
+      "category": "housing",
+      "expect_status": 200
+    },
+    {
+      "id": "kauai-hcv-waitlist",
+      "url": "https://www.kauai.gov/Government/Departments-Agencies/Housing-Agency",
+      "label": "Kaua\u02bbi Section 8 HCV Waiting List",
+      "agency": "Kaua\u02bbi Housing",
+      "category": "housing",
+      "expect_status": 200
+    },
+    {
+      "id": "dcca-pvl-landing",
+      "url": "https://cca.hawaii.gov/reb/real_ed/",
+      "label": "DCCA PVL \u2014 2 forms",
+      "agency": "DCCA PVL",
+      "category": "professional-license",
+      "expect_status": 200
+    },
+    {
+      "id": "contractor-license",
+      "url": "https://cca.hawaii.gov/pvl/boards/contractor/application_publications/",
+      "label": "General Contractor License (Class A, B, or C)",
+      "agency": "DCCA PVL",
+      "category": "professional-license",
+      "expect_status": 200
+    },
+    {
+      "id": "pvl-insurance-producer",
+      "url": "https://cca.hawaii.gov/ins/producer-licensing/",
+      "label": "Insurance Producer License (Resident)",
+      "agency": "DCCA Insurance",
+      "category": "professional-license",
+      "expect_status": 200
+    },
+    {
+      "id": "notary-commission",
+      "url": "https://notary.ehawaii.gov/notary/public/application.html",
+      "label": "Notary Public Commission Application",
+      "agency": "AG NPO",
+      "category": "professional-license",
+      "expect_status": 200
+    },
+    {
+      "id": "big-island-rpt-landing",
+      "url": "https://www.hawaiipropertytax.com/exemptions.html",
+      "label": "Big Island RPT \u2014 2 forms",
+      "agency": "Big Island RPT",
+      "category": "property",
+      "expect_status": 200
+    },
+    {
+      "id": "honolulu-change-status",
+      "url": "https://realproperty.honolulu.gov/tax-relief-and-forms/miscellaneous-forms/change-of-status-exemption-claims-mailing-address/",
+      "label": "Change of Status (Home Exemption / Mailing Address)",
+      "agency": "Honolulu RPAD",
+      "category": "property",
+      "expect_status": 200
+    },
+    {
+      "id": "maui-circuit-breaker",
+      "url": "https://www.mauicounty.gov/DocumentView.aspx?DID=8169",
+      "label": "Circuit Breaker Tax Credit",
+      "agency": "Maui RPA",
+      "category": "property",
+      "expect_status": 200
+    },
+    {
+      "id": "kaua-i-rpa-landing",
+      "url": "https://www.kauai.gov/Government/Departments-Agencies/Finance/Real-Property-Tax/Assessment/ExemptionTax-Relief-Information",
+      "label": "Kaua\u02bbi RPA \u2014 2 forms",
+      "agency": "Kaua\u02bbi RPA",
+      "category": "property",
+      "expect_status": 200
+    },
+    {
+      "id": "honolulu-camping",
+      "url": "https://www.honolulu.gov/dpr/camping/",
+      "label": "City & County of Honolulu \u2014 Family Camping Permit",
+      "agency": "C&C Honolulu DPR",
+      "category": "recreation",
+      "expect_status": 200
+    },
+    {
+      "id": "commercial-marine-license",
+      "url": "https://dlnr.ehawaii.gov/cmls-public/",
+      "label": "Commercial Marine License (CML)",
+      "agency": "DLNR DAR",
+      "category": "recreation",
+      "expect_status": 200
+    },
+    {
+      "id": "pet-import",
+      "url": "https://hdoa.hawaii.gov/ai/aqs/aqs-info/",
+      "label": "Dog & Cat Import (AQS-279) \u2014 Hawaii Quarantine Program",
+      "agency": "HDOA AID",
+      "category": "recreation",
+      "expect_status": 200
+    },
+    {
+      "id": "freshwater-fishing-license",
+      "url": "https://freshwater.ehawaii.gov/freshwater/",
+      "label": "Freshwater Game Fishing License",
+      "agency": "DLNR DAR",
+      "category": "recreation",
+      "expect_status": 200
+    },
+    {
+      "id": "bb-1",
+      "url": "https://files.hawaii.gov/tax/forms/2024/bb1_f.pdf",
+      "label": "Basic Business Application (BB-1) \u2014 General Excise / Use / Tax IDs",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "dotax-landing-forms-a1-b1-1indinc",
+      "url": "https://tax.hawaii.gov/forms/a1_b1_1indinc/",
+      "label": "DOTAX \u2014 2 forms",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "d-100",
+      "url": "https://files.hawaii.gov/tax/forms/current/d100_i.pdf",
+      "label": "Form D-100 \u2014 Request for Installment Plan Agreement",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "l-72",
+      "url": "https://files.hawaii.gov/tax/forms/current/l72_i.pdf",
+      "label": "Form L-72 \u2014 Request for Copies of Hawaii Tax Return",
+      "agency": "DOTAX",
+      "category": "tax",
+      "expect_status": 200
+    },
+    {
+      "id": "county-dmv-landing-csd-motor-vehicle-registration",
+      "url": "https://www.honolulu.gov/csd/motor-vehicle-registration/",
+      "label": "County DMV \u2014 2 forms",
+      "agency": "County DMV",
+      "category": "vehicle",
+      "expect_status": 200
+    },
+    {
+      "id": "county-dmv-landing-library-motor-vehicle-safety-office",
+      "url": "https://hidot.hawaii.gov/highways/library/motor-vehicle-safety-office/",
+      "label": "County DMV \u2014 2 forms",
+      "agency": "County DMV",
+      "category": "vehicle",
+      "expect_status": 200
+    },
+    {
+      "id": "disabled-parking-placard",
+      "url": "https://health.hawaii.gov/dcab/disability-parking-permits/",
+      "label": "Disabled Parking Permit (PA-3)",
+      "agency": "DOH DCAB",
+      "category": "vehicle",
+      "expect_status": 200
+    },
+    {
+      "id": "duplicate-dl",
+      "url": "https://www1.honolulu.gov/duplicates/",
+      "label": "Duplicate / Replacement Hawaii Driver License or State ID",
+      "agency": "County DLs",
+      "category": "vehicle",
+      "expect_status": 200
+    },
+    {
+      "id": "name-change-adult",
+      "url": "https://namechange.ehawaii.gov",
+      "label": "Adult Name Change (Lt. Governor)",
+      "agency": "Lt. Governor",
+      "category": "vital-records",
+      "expect_status": 200
+    },
+    {
+      "id": "apostille-vital-records",
+      "url": "https://health.hawaii.gov/vitalrecords/apostilles/",
+      "label": "Apostille / Authentication of Hawaii Vital Records",
+      "agency": "LtGov + DOH",
+      "category": "vital-records",
+      "expect_status": 200
+    },
+    {
+      "id": "marriage-license-application",
+      "url": "https://marriage.ehawaii.gov",
+      "label": "Marriage License Application (Hawaii)",
+      "agency": "DOH OHSM",
+      "category": "vital-records",
+      "expect_status": 200
+    },
+    {
+      "id": "paternity-vep",
+      "url": "https://health.hawaii.gov/vitalrecords/paternity/",
+      "label": "Voluntary Establishment of Paternity (VEP)",
+      "agency": "DOH OHSM",
+      "category": "vital-records",
+      "expect_status": 200
+    },
+    {
+      "id": "phc-hc5",
+      "url": "https://labor.hawaii.gov/dcd/files/2025/10/HC5-rev-2025.10.pdf",
+      "label": "Prepaid Health Care \u2014 Employee Notification",
+      "agency": "DLIR DCD",
+      "category": "worker",
+      "expect_status": 200
+    },
+    {
+      "id": "wage-claim",
+      "url": "https://labor.hawaii.gov/wsd/forms/",
+      "label": "Wage Claim \u2014 Unpaid Wages",
+      "agency": "DLIR WSD",
+      "category": "worker",
+      "expect_status": 200
+    },
+    {
+      "id": "wc-77-hearing",
+      "url": "https://labor.hawaii.gov/dcd/files/2023/05/WC-77-rev-1205.pdf",
+      "label": "Workers' Compensation \u2014 Application for Hearing",
+      "agency": "DLIR DCD",
+      "category": "worker",
+      "expect_status": 200
+    },
+    {
+      "id": "wc-5-employee",
+      "url": "https://labor.hawaii.gov/dcd/files/2023/09/WC-5-REV-0923.pdf",
+      "label": "Workers' Compensation \u2014 Employee Claim",
+      "agency": "DLIR DCD",
+      "category": "worker",
+      "expect_status": 200
+    }
+  ]
+}
